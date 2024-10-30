@@ -134,11 +134,11 @@ class Resource(DcatClass):
 
 
     def add_type(self, value):
-        self.identifier.append(dcterms.Type(value=value))
+        self.type.append(dcterms.Type(value=value))
 
 
     def add_version_notes(self, value: str, lang: Optional[str] = None):
-        self.description.append(rdf.RdfString(value=value, lang=lang))
+        self.versionNotes.append(rdf.RdfString(value=value, lang=lang))
 
 @dataclass(kw_only=True)
 class Dataset(Resource):

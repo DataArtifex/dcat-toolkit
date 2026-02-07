@@ -1,14 +1,23 @@
 # DCAT
 
-[![PyPI - Version](https://img.shields.io/pypi/v/hatch-foo.svg)](https://pypi.org/project/hatch-foo)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/hatch-foo.svg)](https://pypi.org/project/hatch-foo)
+[![PyPI - Version](https://img.shields.io/pypi/v/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 **This project is in its early development stages, so stability is not guaranteed, and documentation is limited. We welcome your feedback and contributions as we refine and expand this project together!**
 
 ## Overview
 
-This project is about Foo and Bar...
+This project provides a Python toolkit for working with DCAT (Data Catalog Vocabulary), an RDF vocabulary designed for interoperability between data catalogs published on the Web. The toolkit implements the W3C DCAT standard using **Pydantic models** and provides utilities for creating, manipulating, and serializing DCAT metadata.
+
+**Key Features:**
+- **Pydantic-based models** with full validation and type safety
+- Python implementation of DCAT classes (Catalog, Dataset, Distribution, DataService, etc.)
+- Support for DCAT 3.0 specification
+- **RDF serialization/deserialization** support via rdflib (Turtle, RDF/XML, JSON-LD, N-Triples)
+- **Round-trip conversion** between Python objects and RDF
+- Type-safe API with comprehensive type hints
+- Support for DCAT Application Profiles (DCAT-AP, DCAT-US, DCAT-AP-HVD)
 
 
 ## Installation
@@ -26,8 +35,8 @@ In the meantime, you can install the package locally by following these steps:
    First, clone the repository to your local machine:
 
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone https://github.com/DataArtifex/dcat-toolkit.git
+   cd dcat-toolkit
    ```
 
 2. **Install the Package:**
@@ -53,7 +62,59 @@ Feel free to replace `<repository-url>` and `<repository-directory>` with the ac
  
 ## Usage
 
-...
+Here's a quick example of how to create a DCAT catalog with a dataset:
+
+```python
+from dartfx.dcat import dcat
+
+# Create a catalog
+catalog = dcat.Catalog(id="my-catalog")
+catalog.add_title("My Data Catalog", lang="en")
+catalog.add_description("A catalog of open datasets", lang="en")
+
+# Create a dataset
+dataset = dcat.Dataset(id="dataset-1")
+dataset.add_title("Population Statistics", lang="en")
+dataset.add_description("Annual population statistics by region", lang="en")
+dataset.add_keyword("population")
+dataset.add_keyword("statistics")
+dataset.add_theme("http://example.org/themes/demographics")
+
+# Create a distribution
+distribution = dcat.Distribution(id="dist-1")
+distribution.title.append("CSV Distribution")
+distribution.add_download_url("http://example.org/data/population.csv")
+distribution.add_media_type("text/csv")
+
+# Link them together
+dataset.add_distribution(distribution)
+catalog.add_dataset(dataset)
+
+# Serialize to RDF Turtle format
+turtle = catalog.to_rdf(format='turtle')
+print(turtle)
+
+# Serialize to RDF/XML
+xml = catalog.to_rdf(format='xml')
+
+# Get the RDF graph directly
+graph = catalog.to_rdf_graph()
+
+# Deserialize from RDF
+from rdflib import URIRef
+subject = URIRef("http://www.w3.org/ns/dcat#my-catalog")
+restored_catalog = dcat.Catalog.from_rdf(turtle, format='turtle', subject=subject)
+```
+
+### Key Features
+
+- **Pydantic-based Models**: Full validation and type safety
+- **RDF Serialization**: Convert to Turtle, RDF/XML, JSON-LD, N-Triples
+- **RDF Deserialization**: Load DCAT metadata from RDF formats
+- **Round-trip Support**: Lossless conversion between Python objects and RDF
+- **Type Hints**: Complete type annotations for better IDE support
+
+For more examples and detailed documentation, see the [documentation](https://github.com/DataArtifex/dcat-toolkit#readme).
 
 ## Roadmap
 

@@ -293,6 +293,5 @@ This implementation is fully compliant with:
 See Also
 --------
 
-- :doc:`../api/dcat_ap_hvd` - API Reference
 - :doc:`dcat_ap` - DCAT-AP Implementation
 - `DCAT_AP_HVD_IMPLEMENTATION.md <../../DCAT_AP_HVD_IMPLEMENTATION.md>`_ - Complete implementation guide

@@ -92,7 +92,7 @@ For High Value Datasets (most specific):
 Next Steps
 ----------
 
-- Read the :doc:`user_guide/index` for detailed information
+- Review :doc:`installation` for environment setup and tooling
 - Explore :doc:`implementations/dcat` for DCAT core
-- Check :doc:`implementations/dcat_ap_hvd` for HVD datasets
-- View :doc:`examples` for more examples
+- Explore :doc:`implementations/dcat_us` for US profile extensions
+- Explore :doc:`implementations/dcat_ap_hvd` for HVD-specific requirements

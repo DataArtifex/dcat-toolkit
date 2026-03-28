@@ -1,11 +1,11 @@
-# DCAT
+# DCAT Toolkit
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/DataArtifex/dcat-toolkit)
 [![PyPI - Version](https://img.shields.io/pypi/v/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-**This project is in its early development stages, so stability is not guaranteed, and documentation is limited. We welcome your feedback and contributions as we refine and expand this project together!**
+Python toolkit for working with DCAT (Data Catalog Vocabulary) metadata using Pydantic models with RDF serialization/deserialization.
 
 ## Overview
 
@@ -23,44 +23,34 @@ This project provides a Python toolkit for working with DCAT (Data Catalog Vocab
 
 ## Installation
 
-### PyPI Release
-
-Once stable, this package will be officially released and distributed through [PyPI](https://pypi.org/). Stay tuned for updates!
-
-### Local Installation
-
-In the meantime, you can install the package locally by following these steps:
-
-1. **Clone the Repository:**
-
-   First, clone the repository to your local machine:
-
-   ```bash
-   git clone https://github.com/DataArtifex/dcat-toolkit.git
-   cd dcat-toolkit
-   ```
-
-2. **Install the Package:**
-
-   From the project's home directory, run the following command to install the package:
-
-   ```bash
-   pip install -e .
-   ```
-
-### Installing Dependencies
-
-To install the required dependencies, execute the following command:
+### Install from PyPI
 
 ```bash
-pip install -r requirements.txt
+pip install dartfx-dcat
 ```
 
-Make sure you are in the project's root directory when running these commands.
+### Install from Source
 
-Feel free to replace `<repository-url>` and `<repository-directory>` with the actual URL and directory name of your project. This enhanced version provides clear instructions and formatting to guide users through the installation process effectively.
+```bash
+git clone https://github.com/DataArtifex/dcat-toolkit.git
+cd dcat-toolkit
+pip install -e .
+```
 
- 
+### Development Setup (uv)
+
+```bash
+uv sync --group dev
+uv run --with pre-commit pre-commit install
+```
+
+You can run all local checks with:
+
+```bash
+uv run --with pre-commit pre-commit run --all-files
+```
+
+
 ## Usage
 
 Here's a quick example of how to create a DCAT catalog with a dataset:
@@ -115,23 +105,19 @@ restored_catalog = dcat.Catalog.from_rdf(turtle, format='turtle', subject=subjec
 - **Round-trip Support**: Lossless conversion between Python objects and RDF
 - **Type Hints**: Complete type annotations for better IDE support
 
-For more examples and detailed documentation, see the [documentation](https://github.com/DataArtifex/dcat-toolkit#readme).
-
-## Roadmap
-
-...
+For additional examples and profile-specific guides, see [docs/source](docs/source).
 
 ## Contributing
- 
+
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
- 
+
 ## License
- 
+
 The MIT License (MIT)
 
 Copyright (c) 2024 Pascal L.G.A. Heus
@@ -141,5 +127,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-

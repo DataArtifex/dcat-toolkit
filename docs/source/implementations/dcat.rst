@@ -132,7 +132,6 @@ This implementation is fully compliant with:
 See Also
 --------
 
-- :doc:`../api/dcat` - API Reference
 - :doc:`dcat_us` - DCAT-US Implementation
 - :doc:`dcat_ap` - DCAT-AP Implementation
 - `DCAT_IMPLEMENTATION.md <../../DCAT_IMPLEMENTATION.md>`_ - Complete implementation guide

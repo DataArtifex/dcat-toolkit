@@ -12,32 +12,39 @@ Install from PyPI
 
 .. code-block:: bash
 
-   pip install dcat-toolkit
+   pip install dartfx-dcat
 
 Install from Source
 -------------------
 
 .. code-block:: bash
 
-   git clone https://github.com/yourusername/dcat-toolkit.git
+   git clone https://github.com/DataArtifex/dcat-toolkit.git
    cd dcat-toolkit
    pip install -e .
 
 Development Installation
 ------------------------
 
-For development, install with test dependencies:
+For development, use ``uv`` with the ``dev`` dependency group:
 
 .. code-block:: bash
 
-   pip install -e ".[dev]"
+   uv sync --group dev
+   uv run --with pre-commit pre-commit install
 
-This installs additional packages for testing and development:
+Run all hooks locally before committing:
+
+.. code-block:: bash
+
+   uv run --with pre-commit pre-commit run --all-files
+
+The development setup includes:
 
 - pytest
-- pytest-cov
 - ruff (linting)
 - mypy (type checking)
+- pre-commit hooks
 
 Verify Installation
 -------------------

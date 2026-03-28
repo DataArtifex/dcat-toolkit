@@ -53,7 +53,7 @@ Installation
 
 .. code-block:: bash
 
-   pip install dcat-toolkit
+   pip install dartfx-dcat
 
 Basic Usage
 ~~~~~~~~~~~
@@ -96,7 +96,6 @@ Table of Contents
 
    installation
    quickstart
-   user_guide/index
 
 .. toctree::
    :maxdepth: 2
@@ -106,24 +105,6 @@ Table of Contents
    implementations/dcat_us
    implementations/dcat_ap
    implementations/dcat_ap_hvd
-
-.. toctree::
-   :maxdepth: 2
-   :caption: API Reference
-
-   api/dcat
-   api/dcat_us
-   api/dcat_ap
-   api/dcat_ap_hvd
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Additional Resources
-
-   examples
-   contributing
-   changelog
-   license
 
 Implementations
 ---------------

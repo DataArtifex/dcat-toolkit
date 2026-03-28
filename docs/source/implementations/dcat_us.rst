@@ -66,17 +66,17 @@ NARA access restriction codes:
    from dartfx.dcat import dcat_us
 
    access = dcat_us.AccessRestriction(id="access-1")
-   
+
    # Set restriction status (mandatory)
    access.set_restriction_status(
        "http://example.org/status/restricted"
    )
-   
+
    # Set specific restriction (recommended)
    access.set_specific_restriction(
        "http://example.org/restriction/foia-exempt"
    )
-   
+
    # Add restriction note (optional)
    access.set_restriction_note(
        "Exempt under FOIA 5 USC 552(b)(6) - Privacy"
@@ -90,13 +90,13 @@ Controlled Unclassified Information handling:
 .. code-block:: python
 
    cui = dcat_us.CuiRestriction(id="cui-1")
-   
+
    # Set CUI banner marking (mandatory)
    cui.set_cui_banner_marking("CUI//SP-PRVCY")
-   
+
    # Set designation indicator (mandatory)
    cui.set_designation_indicator("CUI")
-   
+
    # Set required indicator per authority (optional)
    cui.set_required_indicator_per_authority("Privacy Act")
 
@@ -108,7 +108,7 @@ Precise geographic coverage using decimal degrees:
 .. code-block:: python
 
    bbox = dcat_us.GeographicBoundingBox(id="bbox-1")
-   
+
    # Set bounding coordinates (all mandatory)
    bbox.set_west_bounding_longitude(-125.0)   # Western boundary
    bbox.set_east_bounding_longitude(-65.0)    # Eastern boundary
@@ -123,17 +123,17 @@ Usage limitation information:
 .. code-block:: python
 
    use = dcat_us.UseRestriction(id="use-1")
-   
+
    # Set restriction status (mandatory)
    use.set_restriction_status(
        "http://example.org/status/restricted"
    )
-   
+
    # Set specific restriction (recommended)
    use.set_specific_restriction(
        "http://example.org/restriction/attribution-required"
    )
-   
+
    # Add restriction note (optional)
    use.set_restriction_note(
        "Attribution required for all uses"
@@ -147,7 +147,7 @@ Legal disclaimers:
 .. code-block:: python
 
    liability = dcat_us.LiabilityStatement(id="liability-1")
-   
+
    # Add liability text (can be multilingual)
    liability.add_label(
        "Data provided as-is without warranty of any kind",
@@ -169,31 +169,31 @@ Complete Example
    # Create dataset
    dataset = Dataset(id="federal-dataset")
    dataset.add_title("Federal Dataset with Restrictions")
-   
+
    # Add access restriction
    access = dcat_us.AccessRestriction(id="access-1")
    access.set_restriction_status("http://example.org/status/restricted")
    access.set_specific_restriction("http://example.org/restriction/foia")
-   
+
    # Add CUI restriction
    cui = dcat_us.CuiRestriction(id="cui-1")
    cui.set_cui_banner_marking("CUI//SP-PRVCY")
    cui.set_designation_indicator("CUI")
-   
+
    # Add geographic coverage
    bbox = dcat_us.GeographicBoundingBox(id="bbox-1")
    bbox.set_west_bounding_longitude(-125.0)
    bbox.set_east_bounding_longitude(-65.0)
    bbox.set_south_bounding_latitude(24.0)
    bbox.set_north_bounding_latitude(49.0)
-   
+
    # Create distribution with liability statement
    distribution = Distribution(id="dist-1")
    distribution.add_download_url("http://example.org/data.csv")
-   
+
    liability = dcat_us.LiabilityStatement(id="liability-1")
    liability.add_label("Data provided as-is without warranty")
-   
+
    dataset.add_distribution(distribution)
 
 Testing
@@ -222,6 +222,5 @@ This implementation is fully compliant with:
 See Also
 --------
 
-- :doc:`../api/dcat_us` - API Reference
 - :doc:`dcat` - DCAT Core Implementation
 - `DCAT_US_IMPLEMENTATION.md <../../DCAT_US_IMPLEMENTATION.md>`_ - Complete implementation guide

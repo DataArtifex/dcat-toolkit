@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dartfx-dcat"
+name = "hatch-foo"
 dynamic = ["version"]
 description = ''
 readme = "README.md"
@@ -16,16 +16,14 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: Implementation :: PyPy",
+  "Programming Language :: Python :: Implementation :: CPython",
 ]
-dependencies = [
-  "dartfx-rdf @ git+https://github.com/DataArtifex/rdf-toolkit.git",
-  "python-dateutil>=2"]
+dependencies = []
 
 [project.urls]
-Documentation = "https://github.com/DataArtifex/dcat-toolkit#readme"
-Issues = "https://github.com/DataArtifex/dcat-toolkit/issues"
-Source = "https://github.com/DataArtifex/dcat-toolkit"
+Documentation = "https://github.com/DataArtifex/hatch-foo#readme"
+Issues = "https://github.com/DataArtifex/hatch-foo/issues"
+Source = "https://github.com/DataArtifex/hatch-foo"
 
 
 [tool.hatch.build.targets.sdist]
@@ -35,7 +33,7 @@ exclude = ["/.github", "/docs"]
 packages = ["src/dartfx"]
 
 [tool.hatch.version]
-path = "src/dartfx/dcat/__about__.py"
+path = "src/dartfx/hatch_foo/__about__.py"
 
 [dependency-groups]
 dev = [
@@ -83,14 +81,14 @@ serve = "python -m http.server -d docs/build/html"
 allow-direct-references = true
 
 [tool.coverage.run]
-source_pkgs = ["dcat", "tests"]
+source_pkgs = ["hatch_foo", "tests"]
 branch = true
 parallel = true
-omit = ["src/dartfx/dcat/__about__.py"]
+omit = ["src/dartfx/hatch_foo/__about__.py"]
 
 [tool.coverage.paths]
-source = ["src/dartfx/dcat", "*/dcat-toolkit/src/dartfx/dcat"]
-tests = ["tests", "*/dartfx/dcat/tests"]
+source = ["src/dartfx/hatch_foo", "*/hatch-foo/src/dartfx/hatch_foo"]
+tests = ["tests", "*/dartfx/hatch-foo/tests"]
 
 [tool.coverage.report]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]

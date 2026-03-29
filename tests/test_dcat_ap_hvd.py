@@ -279,6 +279,7 @@ class TestCompleteHVDExample:
         # Create bulk download distribution
         bulk_dist = dcat_ap_hvd.Distribution(id="bulk-download")
         bulk_dist.make_hvd_compliant()
+        bulk_dist.add_access_url("http://example.org/bulk-data.zip")
         bulk_dist.add_download_url("http://example.org/bulk-data.zip")
         bulk_dist.add_license(dcat_ap_hvd.HVDLicence.CC_BY_4_0)
         bulk_dist.add_media_type("application/zip")

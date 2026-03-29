@@ -16,7 +16,7 @@ catalog:socrata_data.sfgov.org_vw6y-z8j6 a dcat:Dataset ;
     dcat:keywords: "311","case","cases","customer service","calls" ;
     dcat:landingPage <https://data.sfgov.org/City-Infrastructure/311-Cases/vw6y-z8j6> ;
     dcterms:publisher "City of San Francisco" ;
-    dcterms:publisher <https://data.sfgov.org> ; 
+    dcterms:publisher <https://data.sfgov.org> ;
     dcterms:license <http://opendatacommons.org/licenses/pddl/1.0/> ;
     dcterms:spatial <http://sws.geonames.org/5391959/> ;
     dcat:distribution catalog:socrata_data.sfgov.org_vw6y-z8j6_csv .
@@ -31,4 +31,3 @@ catalog:socrata_data.sfgov.org_vw6y-z8j6_api a dcat:Service ;
     dcterms:type <http://rdf.highvaluedata.net/vocab/service_type#SocrataOpenDataAPI> ;
     dcterms:conformsTo <https://dev.socrata.com/foundry/data.sfgov.org/vw6y-z8j6> ;
     dcat:enpointUrl <https://data.sfgov.org/resource/vw6y-z8j6.json> .
-

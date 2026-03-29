@@ -1,7 +1,7 @@
 # DCAT 3.0 Implementation Summary
 
-**Date:** 2026-02-06  
-**Version:** 3.0  
+**Date:** 2026-02-06
+**Version:** 3.0
 **Status:** ✅ COMPLETED
 
 ---
@@ -22,24 +22,24 @@ DCAT is an RDF vocabulary designed to facilitate interoperability between data c
 
 All nine core DCAT classes have been implemented:
 
-✅ **Resource** - Base class for cataloged resources  
-✅ **Dataset** - Collection of data  
-✅ **Distribution** - Specific representation of a dataset  
-✅ **DataService** - Collection of operations providing access to datasets  
-✅ **Catalog** - Curated collection of metadata about resources  
-✅ **CatalogRecord** - Metadata about a dataset's entry in a catalog  
-✅ **DatasetSeries** - Collection of datasets published separately  
-✅ **Relationship** - Association between datasets  
-✅ **Role** - Function of an entity with respect to another resource  
+✅ **Resource** - Base class for cataloged resources
+✅ **Dataset** - Collection of data
+✅ **Distribution** - Specific representation of a dataset
+✅ **DataService** - Collection of operations providing access to datasets
+✅ **Catalog** - Curated collection of metadata about resources
+✅ **CatalogRecord** - Metadata about a dataset's entry in a catalog
+✅ **DatasetSeries** - Collection of datasets published separately
+✅ **Relationship** - Association between datasets
+✅ **Role** - Function of an entity with respect to another resource
 
 ### DCAT Features
 
-✅ **Pydantic Models** - Type-safe with automatic validation  
-✅ **RDF Serialization** - Turtle, RDF/XML, JSON-LD, N-Triples  
-✅ **RDF Deserialization** - Load from any RDF format  
-✅ **Multilingual Support** - Language-tagged literals  
-✅ **Namespace Management** - DCAT, DCTerms, FOAF, SPDX  
-✅ **Helper Methods** - Convenient add_* methods for all properties  
+✅ **Pydantic Models** - Type-safe with automatic validation
+✅ **RDF Serialization** - Turtle, RDF/XML, JSON-LD, N-Triples
+✅ **RDF Deserialization** - Load from any RDF format
+✅ **Multilingual Support** - Language-tagged literals
+✅ **Namespace Management** - DCAT, DCTerms, FOAF, SPDX
+✅ **Helper Methods** - Convenient add_* methods for all properties
 
 ---
 
@@ -578,11 +578,11 @@ dataset.to_rdf(format='turtle')
 
 This implementation is fully compliant with:
 
-✅ **DCAT Version 3** - W3C Recommendation  
-✅ **RDF 1.1** - Resource Description Framework  
-✅ **Dublin Core Terms** - Metadata vocabulary  
-✅ **FOAF** - Friend of a Friend vocabulary  
-✅ **SPDX** - Software Package Data Exchange  
+✅ **DCAT Version 3** - W3C Recommendation
+✅ **RDF 1.1** - Resource Description Framework
+✅ **Dublin Core Terms** - Metadata vocabulary
+✅ **FOAF** - Friend of a Friend vocabulary
+✅ **SPDX** - Software Package Data Exchange
 
 ---
 

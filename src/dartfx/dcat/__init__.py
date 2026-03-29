@@ -5,36 +5,51 @@
 from .dcat import (
     DCAT,
     DcatResource,
-    Resource,
-    Dataset as DcatDataset,
-    Catalog as DcatCatalog,
-    CatalogRecord as DcatCatalogRecord,
-    DatasetSeries as DcatDatasetSeries,
-    Distribution as DcatDistribution,
-    DataService as DcatDataService,
     Relationship,
+    Resource,
 )
-
-from .dcat_us import (
-    DCAT_US,
-    DcatUSResource,
-    AccessRestriction,
-    CuiRestriction,
-    GeographicBoundingBox,
-    LiabilityStatement,
-    UseRestriction,
+from .dcat import (
+    Catalog as DcatCatalog,
 )
-
+from .dcat import (
+    CatalogRecord as DcatCatalogRecord,
+)
+from .dcat import (
+    DataService as DcatDataService,
+)
+from .dcat import (
+    Dataset as DcatDataset,
+)
+from .dcat import (
+    DatasetSeries as DcatDatasetSeries,
+)
+from .dcat import (
+    Distribution as DcatDistribution,
+)
 from .dcat_ap import (
     DCATAP,
-    DcatAPResource,
-    Catalog as DcatAPCatalog,
-    Dataset as DcatAPDataset,
-    Distribution as DcatAPDistribution,
-    DataService as DcatAPDataService,
-    DatasetSeries as DcatAPDatasetSeries,
-    CatalogRecord as DcatAPCatalogRecord,
     ControlledVocabularies,
+    DcatAPResource,
+)
+from .dcat_ap import (
+    Catalog as DcatAPCatalog,
+)
+from .dcat_ap import (
+    CatalogRecord as DcatAPCatalogRecord,
+)
+from .dcat_ap import (
+    DataService as DcatAPDataService,
+)
+from .dcat_ap import (
+    Dataset as DcatAPDataset,
+)
+from .dcat_ap import (
+    DatasetSeries as DcatAPDatasetSeries,
+)
+from .dcat_ap import (
+    Distribution as DcatAPDistribution,
+)
+from .dcat_ap import (
     HVDCategory as DcatAPHVDCategory,
 )
 
@@ -42,15 +57,24 @@ from .dcat_ap import (
 from .dcat_ap_hvd import (
     DCATAP_HVD,
     HVD_REGULATION,
-    HVDResource,
     Catalog,
-    Dataset,
-    Distribution,
-    DataService,
-    DatasetSeries,
     CatalogRecord,
+    DataService,
+    Dataset,
+    DatasetSeries,
+    Distribution,
     HVDCategory,
     HVDLicence,
+    HVDResource,
+)
+from .dcat_us import (
+    DCAT_US,
+    AccessRestriction,
+    CuiRestriction,
+    DcatUSResource,
+    GeographicBoundingBox,
+    LiabilityStatement,
+    UseRestriction,
 )
 
 __all__ = [

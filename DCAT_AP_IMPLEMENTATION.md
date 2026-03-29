@@ -1,7 +1,7 @@
 # DCAT-AP 3.0.1 Implementation Summary
 
-**Date:** 2026-02-06  
-**Version:** 3.0.1  
+**Date:** 2026-02-06
+**Version:** 3.0.1
 **Status:** ✅ COMPLETED
 
 ---
@@ -22,19 +22,19 @@ DCAT-AP provides a minimal common basis within Europe to share Datasets and Data
 
 All core DCAT classes have been extended with DCAT-AP specific properties:
 
-✅ **Catalog** - Extended with applicable legislation, geographical/temporal coverage  
-✅ **Dataset** - Extended with HVD support, access rights, provenance, qualified attribution  
-✅ **Distribution** - Extended with availability, ODRL policies, status  
-✅ **DataService** - Extended with applicable legislation  
-✅ **DatasetSeries** - Extended with applicable legislation, access rights  
-✅ **CatalogRecord** - Extended with applicable legislation  
+✅ **Catalog** - Extended with applicable legislation, geographical/temporal coverage
+✅ **Dataset** - Extended with HVD support, access rights, provenance, qualified attribution
+✅ **Distribution** - Extended with availability, ODRL policies, status
+✅ **DataService** - Extended with applicable legislation
+✅ **DatasetSeries** - Extended with applicable legislation, access rights
+✅ **CatalogRecord** - Extended with applicable legislation
 
 ### DCAT-AP Specific Features
 
-✅ **Controlled Vocabularies** - EU mandatory and recommended vocabularies  
-✅ **High Value Datasets (HVD)** - Full support for HVD regulation  
-✅ **Multilingual Support** - Language-tagged literals  
-✅ **Legal Metadata** - Applicable legislation tracking  
+✅ **Controlled Vocabularies** - EU mandatory and recommended vocabularies
+✅ **High Value Datasets (HVD)** - Full support for HVD regulation
+✅ **Multilingual Support** - Language-tagged literals
+✅ **Legal Metadata** - Applicable legislation tracking
 
 ---
 
@@ -42,8 +42,8 @@ All core DCAT classes have been extended with DCAT-AP specific properties:
 
 ### 1. Applicable Legislation
 
-**Property:** `dcatap:applicableLegislation`  
-**Usage:** Mandatory for High Value Datasets (HVD)  
+**Property:** `dcatap:applicableLegislation`
+**Usage:** Mandatory for High Value Datasets (HVD)
 **Type:** Legal Resource
 
 All main classes support this property for HVD compliance:
@@ -60,8 +60,8 @@ dataset.add_applicable_legislation(
 
 ### 2. Access Rights
 
-**Property:** `dcterms:accessRights`  
-**Usage:** Recommended  
+**Property:** `dcterms:accessRights`
+**Usage:** Recommended
 **Controlled Vocabulary:** EU Access Rights
 
 ```python
@@ -73,8 +73,8 @@ dataset.set_access_rights(
 
 ### 3. Availability
 
-**Property:** `dcatap:availability`  
-**Usage:** For distributions  
+**Property:** `dcatap:availability`
+**Usage:** For distributions
 **Controlled Vocabulary:** EU Planned Availability
 
 ```python
@@ -86,8 +86,8 @@ distribution.set_availability(
 
 ### 4. ODRL Policies
 
-**Property:** `odrl:hasPolicy`  
-**Usage:** For distributions  
+**Property:** `odrl:hasPolicy`
+**Usage:** For distributions
 **Type:** ODRL Policy
 
 ```python
@@ -97,8 +97,8 @@ distribution.add_policy("http://example.org/policy/open-data")
 
 ### 5. Provenance
 
-**Property:** `dcterms:provenance`  
-**Usage:** For datasets  
+**Property:** `dcterms:provenance`
+**Usage:** For datasets
 **Type:** Provenance Statement
 
 ```python
@@ -108,8 +108,8 @@ dataset.add_provenance("http://example.org/provenance/statement-1")
 
 ### 6. Qualified Attribution
 
-**Property:** `prov:qualifiedAttribution`  
-**Usage:** For datasets  
+**Property:** `prov:qualifiedAttribution`
+**Usage:** For datasets
 **Type:** Attribution
 
 ```python
@@ -406,11 +406,11 @@ dcat_ap.HVDCategory.GEOSPATIAL
 
 This implementation is fully compliant with:
 
-✅ **DCAT-AP Version 3.0.1** - All DCAT-AP extensions implemented  
-✅ **DCAT Version 3** - Based on latest DCAT core  
-✅ **W3C Standards** - RDF and vocabulary standards  
-✅ **EU Regulations** - HVD regulation (EU) 2023/138  
-✅ **EU Vocabularies** - All mandatory controlled vocabularies  
+✅ **DCAT-AP Version 3.0.1** - All DCAT-AP extensions implemented
+✅ **DCAT Version 3** - Based on latest DCAT core
+✅ **W3C Standards** - RDF and vocabulary standards
+✅ **EU Regulations** - HVD regulation (EU) 2023/138
+✅ **EU Vocabularies** - All mandatory controlled vocabularies
 
 ---
 

@@ -1,7 +1,7 @@
 # DCAT-AP HVD 3.0.0 Implementation Summary
 
-**Date:** 2026-02-06  
-**Version:** 3.0.0  
+**Date:** 2026-02-06
+**Version:** 3.0.0
 **Status:** ✅ COMPLETED
 
 ---
@@ -12,7 +12,7 @@ Successfully implemented **DCAT-AP HVD Version 3.0.0** (DCAT Application Profile
 
 DCAT-AP HVD provides usage guidelines on top of DCAT-AP for catalogued resources within the scope of the High-Value Dataset implementing regulation.
 
-**Official Specification:** https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/  
+**Official Specification:** https://semiceu.github.io/DCAT-AP/releases/3.0.0-hvd/
 **HVD Regulation:** https://eur-lex.europa.eu/eli/reg_impl/2023/138/oj
 
 ---
@@ -23,20 +23,20 @@ DCAT-AP HVD provides usage guidelines on top of DCAT-AP for catalogued resources
 
 All DCAT-AP classes have been extended with HVD-specific mandatory requirements:
 
-✅ **Catalog** - No additional requirements (contains HVD datasets/services)  
-✅ **Dataset** - Extended with `hvdCategory` (mandatory), compliance helpers  
-✅ **Distribution** - Extended with HVD compliance requirements  
-✅ **DataService** - Extended with `hvdCategory` (mandatory for APIs)  
-✅ **DatasetSeries** - Extended with `hvdCategory` (mandatory)  
-✅ **CatalogRecord** - No additional requirements  
+✅ **Catalog** - No additional requirements (contains HVD datasets/services)
+✅ **Dataset** - Extended with `hvdCategory` (mandatory), compliance helpers
+✅ **Distribution** - Extended with HVD compliance requirements
+✅ **DataService** - Extended with `hvdCategory` (mandatory for APIs)
+✅ **DatasetSeries** - Extended with `hvdCategory` (mandatory)
+✅ **CatalogRecord** - No additional requirements
 
 ### HVD-Specific Features
 
-✅ **HVD Categories** - Six official thematic categories  
-✅ **HVD Regulation** - Automatic regulation reference  
-✅ **Compliance Helpers** - `make_hvd_compliant()` and `is_hvd_compliant()` methods  
-✅ **HVD Licences** - CC-BY 4.0 and more permissive licences  
-✅ **API Requirements** - Mandatory API support for HVD datasets  
+✅ **HVD Categories** - Six official thematic categories
+✅ **HVD Regulation** - Automatic regulation reference
+✅ **Compliance Helpers** - `make_hvd_compliant()` and `is_hvd_compliant()` methods
+✅ **HVD Licences** - CC-BY 4.0 and more permissive licences
+✅ **API Requirements** - Mandatory API support for HVD datasets
 
 ---
 
@@ -388,12 +388,12 @@ dataset.make_hvd_compliant(HVDCategory.GEOSPATIAL)
 
 This implementation is fully compliant with:
 
-✅ **DCAT-AP HVD Version 3.0.0** - All HVD requirements implemented  
-✅ **DCAT-AP Version 3.0.1** - Based on latest DCAT-AP  
-✅ **DCAT Version 3** - Based on core DCAT 3.0  
-✅ **W3C Standards** - RDF and vocabulary standards  
-✅ **EU HVD Regulation** - (EU) 2023/138  
-✅ **EU Vocabularies** - Official HVD categories  
+✅ **DCAT-AP HVD Version 3.0.0** - All HVD requirements implemented
+✅ **DCAT-AP Version 3.0.1** - Based on latest DCAT-AP
+✅ **DCAT Version 3** - Based on core DCAT 3.0
+✅ **W3C Standards** - RDF and vocabulary standards
+✅ **EU HVD Regulation** - (EU) 2023/138
+✅ **EU Vocabularies** - Official HVD categories
 
 ---
 

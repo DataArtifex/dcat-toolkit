@@ -1,7 +1,7 @@
 # DCAT-US 3.0 Implementation Summary
 
-**Date:** 2026-02-06  
-**Version:** 3.0  
+**Date:** 2026-02-06
+**Version:** 3.0
 **Status:** ✅ COMPLETED
 
 ---
@@ -20,11 +20,11 @@ Successfully implemented **DCAT-US Version 3.0** specification using Pydantic-ba
 
 All DCAT-US 3.0 specific classes have been implemented:
 
-✅ **AccessRestriction** - `dcat-us:AccessRestriction`  
-✅ **CuiRestriction** - `dcat-us:CuiRestriction`  
-✅ **GeographicBoundingBox** - `dcat-us:GeographicBoundingBox`  
-✅ **LiabilityStatement** - `dcat-us:LiabilityStatement`  
-✅ **UseRestriction** - `dcat-us:UseRestriction`  
+✅ **AccessRestriction** - `dcat-us:AccessRestriction`
+✅ **CuiRestriction** - `dcat-us:CuiRestriction`
+✅ **GeographicBoundingBox** - `dcat-us:GeographicBoundingBox`
+✅ **LiabilityStatement** - `dcat-us:LiabilityStatement`
+✅ **UseRestriction** - `dcat-us:UseRestriction`
 
 ### Supporting Classes
 
@@ -252,8 +252,8 @@ from rdflib import URIRef
 
 subject = URIRef("http://resources.data.gov/ontology/dcat-us#access-restriction-1")
 restored = dcat_us.AccessRestriction.from_rdf(
-    turtle, 
-    format='turtle', 
+    turtle,
+    format='turtle',
     subject=subject
 )
 ```
@@ -366,11 +366,11 @@ print(turtle)
 
 This implementation is fully compliant with:
 
-✅ **DCAT-US Version 3.0** - All DCAT-US specific classes implemented  
-✅ **DCAT Version 3** - Based on latest DCAT core specification  
-✅ **W3C Standards** - Follows W3C RDF and vocabulary standards  
-✅ **NARA Guidelines** - Supports NARA archival requirements  
-✅ **CUI Requirements** - Full support for Controlled Unclassified Information  
+✅ **DCAT-US Version 3.0** - All DCAT-US specific classes implemented
+✅ **DCAT Version 3** - Based on latest DCAT core specification
+✅ **W3C Standards** - Follows W3C RDF and vocabulary standards
+✅ **NARA Guidelines** - Supports NARA archival requirements
+✅ **CUI Requirements** - Full support for Controlled Unclassified Information
 
 ---
 
@@ -410,12 +410,12 @@ assert restored.model_dump() == original.model_dump()  # ✅ Lossless
 
 ## Benefits
 
-✅ **Standards Compliant** - Fully implements DCAT-US 3.0 specification  
-✅ **Type Safe** - Pydantic validation prevents errors  
-✅ **RDF Native** - Built-in serialization/deserialization  
-✅ **Well Tested** - 19 comprehensive test cases  
-✅ **Well Documented** - Complete documentation and examples  
-✅ **US Government Ready** - Supports NARA, CUI, and federal requirements  
+✅ **Standards Compliant** - Fully implements DCAT-US 3.0 specification
+✅ **Type Safe** - Pydantic validation prevents errors
+✅ **RDF Native** - Built-in serialization/deserialization
+✅ **Well Tested** - 19 comprehensive test cases
+✅ **Well Documented** - Complete documentation and examples
+✅ **US Government Ready** - Supports NARA, CUI, and federal requirements
 
 ---
 

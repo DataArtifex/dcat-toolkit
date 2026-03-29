@@ -1,8 +1,8 @@
 # DCAT Toolkit - Code Review & Strengthening Report
 
-**Date:** 2026-02-06  
-**Reviewer:** AI Code Review  
-**Project:** dartfx-dcat (DCAT Toolkit)  
+**Date:** 2026-02-06
+**Reviewer:** AI Code Review
+**Project:** dartfx-dcat (DCAT Toolkit)
 **Version:** 0.0.1
 
 ---
@@ -22,8 +22,8 @@ This comprehensive code review identifies **critical bugs**, **code quality issu
 ## 🔴 CRITICAL ISSUES
 
 ### 1. Typo in `add_accrual_peridodicity` - Line 157
-**File:** `src/dartfx/dcat/dcat.py`  
-**Line:** 157  
+**File:** `src/dartfx/dcat/dcat.py`
+**Line:** 157
 **Severity:** 🔴 CRITICAL
 
 **Issue:**
@@ -41,8 +41,8 @@ value = dcterms.AccrualPeriodicity(value=value)
 ---
 
 ### 2. Wrong Class Used in `add_creator` - Line 89
-**File:** `src/dartfx/dcat/dcat.py`  
-**Line:** 89  
+**File:** `src/dartfx/dcat/dcat.py`
+**Line:** 89
 **Severity:** 🔴 CRITICAL
 
 **Issue:**
@@ -62,8 +62,8 @@ def add_creator(self, value: str):
 ---
 
 ### 3. Method Name Typo: `add_accrual_peridodicity`
-**File:** `src/dartfx/dcat/dcat.py`  
-**Line:** 155  
+**File:** `src/dartfx/dcat/dcat.py`
+**Line:** 155
 **Severity:** 🟠 HIGH
 
 **Issue:**
@@ -91,8 +91,8 @@ def add_frequency(self, value: str):
 ## 🟠 HIGH PRIORITY ISSUES
 
 ### 4. Redundant Type Creation in `add_accrual_periodicity`
-**File:** `src/dartfx/dcat/dcat.py`  
-**Lines:** 155-161  
+**File:** `src/dartfx/dcat/dcat.py`
+**Lines:** 155-161
 **Severity:** 🟠 HIGH
 
 **Issue:**
@@ -122,7 +122,7 @@ def add_accrual_periodicity(self, value: str|dcterms.AccrualPeriodicity):
 ---
 
 ### 5. Missing Dependency Documentation
-**File:** `pyproject.toml`  
+**File:** `pyproject.toml`
 **Severity:** 🟠 HIGH
 
 **Issue:** The project depends on `dartfx.rdf` module (imported in multiple files), but this dependency is not listed in `pyproject.toml`.
@@ -145,7 +145,7 @@ Or document if `dartfx.rdf` is part of this monorepo.
 ## 🟡 MEDIUM PRIORITY ISSUES
 
 ### 6. Incomplete README
-**File:** `README.md`  
+**File:** `README.md`
 **Severity:** 🟡 MEDIUM
 
 **Issues:**
@@ -160,8 +160,8 @@ Or document if `dartfx.rdf` is part of this monorepo.
 ---
 
 ### 7. Inconsistent Field Type: `version`
-**File:** `src/dartfx/dcat/dcat.py`  
-**Line:** 75  
+**File:** `src/dartfx/dcat/dcat.py`
+**Line:** 75
 **Severity:** 🟡 MEDIUM
 
 **Issue:**
@@ -181,7 +181,7 @@ version: Optional[list[str]] = field(default_factory=list)
 ---
 
 ### 8. Missing Tests
-**File:** `tests/` directory  
+**File:** `tests/` directory
 **Severity:** 🟡 MEDIUM
 
 **Issue:** The `tests/` directory is nearly empty. No unit tests for the core DCAT classes.
@@ -197,7 +197,7 @@ version: Optional[list[str]] = field(default_factory=list)
 ---
 
 ### 9. Missing Docstrings for Methods
-**File:** `src/dartfx/dcat/dcat.py`  
+**File:** `src/dartfx/dcat/dcat.py`
 **Severity:** 🟡 MEDIUM
 
 **Issue:** Most `add_*` methods lack docstrings explaining parameters, return values, and usage.
@@ -206,11 +206,11 @@ version: Optional[list[str]] = field(default_factory=list)
 ```python
 def add_title(self, value: str, lang: Optional[str] = None):
     """Add a title to the resource.
-    
+
     Args:
         value: The title text
         lang: Optional language code (e.g., 'en', 'fr')
-    
+
     Example:
         >>> resource.add_title("My Dataset", lang="en")
     """
@@ -222,8 +222,8 @@ def add_title(self, value: str, lang: Optional[str] = None):
 ## 🔵 LOW PRIORITY ISSUES
 
 ### 10. Commented-Out Code
-**File:** `src/dartfx/dcat/dcat.py`  
-**Lines:** 54-55, 57, 62-63, 69-74, 77-79, 150-153, 286, 293-294, 346-347  
+**File:** `src/dartfx/dcat/dcat.py`
+**Lines:** 54-55, 57, 62-63, 69-74, 77-79, 150-153, 286, 293-294, 346-347
 **Severity:** 🔵 LOW
 
 **Issue:** Multiple commented-out property definitions throughout the code.
@@ -246,7 +246,7 @@ def add_title(self, value: str, lang: Optional[str] = None):
 ---
 
 ### 11. Inconsistent Return Values
-**File:** `src/dartfx/dcat/dcat.py`  
+**File:** `src/dartfx/dcat/dcat.py`
 **Severity:** 🔵 LOW
 
 **Issue:** Some `add_*` methods return the created object, others don't.
@@ -264,8 +264,8 @@ def add_title(self, value: str, lang: Optional[str] = None):
 ---
 
 ### 12. Missing Type Hints for `add_type`
-**File:** `src/dartfx/dcat/dcat.py`  
-**Line:** 136  
+**File:** `src/dartfx/dcat/dcat.py`
+**Line:** 136
 **Severity:** 🔵 LOW
 
 **Issue:**
@@ -283,8 +283,8 @@ def add_type(self, value: str):
 ---
 
 ### 13. Inconsistent Naming: `endpointURL` vs `downloadURL`
-**File:** `src/dartfx/dcat/dcat.py`  
-**Lines:** 284, 326  
+**File:** `src/dartfx/dcat/dcat.py`
+**Lines:** 284, 326
 **Severity:** 🔵 LOW
 
 **Issue:** Field names use inconsistent capitalization:

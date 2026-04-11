@@ -21,7 +21,7 @@ classifiers = [
 ]
 dependencies = [
   "dartfx-rdf @ git+https://github.com/DataArtifex/rdf-toolkit.git",
-  "python-dateutil>=2"]
+  "python-dateutil>=2.9.0"]
 
 [project.urls]
 Documentation = "https://github.com/DataArtifex/dcat-toolkit#readme"
@@ -84,7 +84,7 @@ serve = "python -m http.server -d docs/build/html"
 allow-direct-references = true
 
 [tool.coverage.run]
-source_pkgs = ["dcat", "tests"]
+source_pkgs = ["dartfx.dcat", "tests"]
 branch = true
 parallel = true
 omit = ["src/dartfx/dcat/__about__.py"]

@@ -43,7 +43,7 @@ The development setup includes:
 
 - pytest
 - ruff (linting)
-- mypy (type checking)
+- pyrefly (type checking)
 - pre-commit hooks
 
 Verify Installation

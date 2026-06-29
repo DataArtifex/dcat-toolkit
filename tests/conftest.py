@@ -1,5 +1,3 @@
-# mypy: disable-error-code=misc
-
 from pathlib import Path
 
 import pytest

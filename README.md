@@ -1,8 +1,14 @@
 # DCAT Toolkit
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/DataArtifex/dcat-toolkit)
-[![PyPI - Version](https://img.shields.io/pypi/v/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/dartfx-dcat.svg)](https://pypi.org/project/dartfx-dcat)
+[![Development Status](https://img.shields.io/badge/status-early%20release-orange.svg)](https://github.com/DataArtifex/dcat-toolkit)
+[![Documentation](https://img.shields.io/badge/docs-blue)](https://www.dataartifex.org/dcat-toolkit/)
+[![Ask DeepWiki](https://img.shields.io/badge/Ask%20DeepWiki-AI%20Docs-5C54E5)](https://deepwiki.com/DataArtifex/dcat-toolkit)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
+[![Package Status](https://img.shields.io/badge/PyPI-not%20published-lightgrey)](https://github.com/DataArtifex/dcat-toolkit)
+[![CI](https://github.com/DataArtifex/dcat-toolkit/actions/workflows/test.yml/badge.svg)](https://github.com/DataArtifex/dcat-toolkit/actions/workflows/test.yml)
+[![Code style: Ruff](https://img.shields.io/badge/code%20style-ruff-261230.svg?logo=ruff&logoColor=D7FF64)](https://github.com/astral-sh/ruff)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 Python toolkit for working with DCAT (Data Catalog Vocabulary) metadata using Pydantic models with RDF serialization/deserialization.

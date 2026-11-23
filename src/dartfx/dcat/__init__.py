@@ -76,6 +76,15 @@ from .dcat_us import (
     LiabilityStatement,
     UseRestriction,
 )
+from .dcat_us import (
+    Catalog as DcatUSCatalog,
+)
+from .dcat_us import (
+    Dataset as DcatUSDataset,
+)
+from .dcat_us import (
+    Distribution as DcatUSDistribution,
+)
 
 __all__ = [
     # DCAT core
@@ -92,6 +101,9 @@ __all__ = [
     # DCAT-US
     "DCAT_US",
     "DcatUSResource",
+    "DcatUSCatalog",
+    "DcatUSDataset",
+    "DcatUSDistribution",
     "AccessRestriction",
     "CuiRestriction",
     "GeographicBoundingBox",

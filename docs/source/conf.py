@@ -17,7 +17,6 @@ release = "0.1.0"
 import os  # noqa: E402
 import sys  # noqa: E402
 
-sys.path.insert(0, os.path.abspath("../.."))
 sys.path.insert(0, os.path.abspath("../../src"))
 
 
@@ -29,6 +28,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
+    "sphinx_copybutton",
     "myst_parser",
 ]
 

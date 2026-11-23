@@ -91,7 +91,7 @@ omit = ["src/dartfx/dcat/__about__.py"]
 
 [tool.coverage.paths]
 source = ["src/dartfx/dcat", "*/dcat-toolkit/src/dartfx/dcat"]
-tests = ["tests", "*/dartfx/dcat/tests"]
+tests = ["tests"]
 
 [tool.coverage.report]
 exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
@@ -135,5 +135,5 @@ line-ending = "auto"
 [tool.pyrefly]
 search-path = ["src"]
 python-version = "3.12.0"
-preset = "legacy"
+preset = "default"
 ignore-missing-imports = ["*"]

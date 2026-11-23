@@ -283,3 +283,81 @@ class TestIntegration:
 
         assert (restriction_uri, RDF.type, dcat_us.DCAT_US.AccessRestriction) in graph
         assert (cui_uri, RDF.type, dcat_us.DCAT_US.CuiRestriction) in graph
+
+
+class TestDcatUSProfileClasses:
+    """Test cases for DCAT-US Dataset, Distribution, and Catalog classes."""
+
+    def test_dataset_with_dcat_us_extensions(self) -> None:
+        """Test creating a DCAT-US Dataset with restrictions, liability, and bbox."""
+        dataset = dcat_us.Dataset(id="us-dataset-1")
+        dataset.add_title("Federal Dataset")
+
+        access = dcat_us.AccessRestriction(
+            id="access-1",
+            restrictionStatus="http://example.org/status/restricted",
+        )
+        cui = dcat_us.CuiRestriction(
+            id="cui-1",
+            cuiBannerMarking="CUI",
+            designationIndicator="CUI//SP-PRVCY",
+        )
+        use = dcat_us.UseRestriction(
+            id="use-1",
+            restrictionStatus="http://example.org/status/restricted",
+        )
+        liability = dcat_us.LiabilityStatement(id="liability-1")
+        liability.add_label("Data provided as-is without warranty")
+        bbox = dcat_us.GeographicBoundingBox(
+            id="bbox-1",
+            westBoundingLongitude=Decimal("-125.0"),
+            eastBoundingLongitude=Decimal("-66.0"),
+            northBoundingLatitude=Decimal("49.0"),
+            southBoundingLatitude=Decimal("24.0"),
+        )
+
+        dataset.add_access_restriction(access)
+        dataset.set_cui_restriction(cui)
+        dataset.add_use_restriction(use)
+        dataset.set_liability_statement(liability)
+        dataset.add_geographic_bounding_box(bbox)
+
+        assert len(dataset.accessRestriction) == 1
+        assert dataset.cuiRestriction == cui
+        assert len(dataset.useRestriction) == 1
+        assert dataset.liabilityStatement == liability
+        assert len(dataset.geographicBoundingBox) == 1
+
+        graph = dataset.to_rdf_graph()
+        assert len(graph) > 0
+        assert (None, dcat_us.DCAT_US.accessRestriction, None) in graph
+        assert (None, dcat_us.DCAT_US.cuiRestriction, None) in graph
+        assert (None, dcat_us.DCAT_US.useRestriction, None) in graph
+        assert (None, dcat_us.DCAT_US.liabilityStatement, None) in graph
+        assert (None, dcat_us.DCAT_US.geographicBoundingBox, None) in graph
+        assert (None, RDF.type, dcat_us.DCAT_US.AccessRestriction) in graph
+        assert (None, RDF.type, dcat_us.DCAT_US.CuiRestriction) in graph
+        assert (None, RDF.type, dcat_us.DCAT_US.GeographicBoundingBox) in graph
+
+    def test_distribution_and_catalog_with_dcat_us_extensions(self) -> None:
+        """Test creating DCAT-US Distribution and Catalog with US profile properties."""
+        dist = dcat_us.Distribution(id="us-dist-1")
+        dist.add_download_url("http://example.org/data.csv")
+        dist.add_use_restriction("http://example.org/use/public")
+
+        dataset = dcat_us.Dataset(id="us-dataset-2")
+        dataset.add_title("Cataloged Federal Dataset")
+        dataset.add_distribution(dist)
+
+        catalog = dcat_us.Catalog(id="us-catalog-1")
+        catalog.add_title("Federal Data Catalog")
+        catalog.add_dataset(dataset)
+        catalog.set_liability_statement("http://example.org/liability/standard")
+
+        assert len(dist.useRestriction) == 1
+        assert len(catalog.dataset) == 1
+        assert catalog.liabilityStatement == "http://example.org/liability/standard"
+
+        graph = catalog.to_rdf_graph()
+        assert (None, dcat_us.DCAT_US.liabilityStatement, None) in graph
+        assert (None, dcat_us.DCAT_US.useRestriction, None) in graph

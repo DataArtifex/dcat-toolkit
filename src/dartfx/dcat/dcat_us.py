@@ -22,6 +22,17 @@ from rdflib import Namespace, URIRef
 
 from dartfx.rdf.pydantic import RdfBaseModel, RdfProperty, dcterms
 
+# Import core DCAT classes
+from .dcat import (
+    Catalog as DcatCatalog,
+)
+from .dcat import (
+    Dataset as DcatDataset,
+)
+from .dcat import (
+    Distribution as DcatDistribution,
+)
+
 # DCAT-US Namespace
 DCAT_US = Namespace("http://resources.data.gov/ontology/dcat-us#")
 
@@ -227,12 +238,94 @@ class UseRestriction(DcatUSResource):
     restrictionNote: Annotated[str | None, RdfProperty(DCAT_US.restrictionNote)] = None
 
 
+class _DcatUSRestrictionsMixin:
+    """Shared DCAT-US 3.0 restriction and liability fields and helpers."""
+
+    accessRestriction: Annotated[list[AccessRestriction | str | URIRef], RdfProperty(DCAT_US.accessRestriction)] = (
+        Field(default_factory=list)
+    )
+    cuiRestriction: Annotated[CuiRestriction | str | URIRef | None, RdfProperty(DCAT_US.cuiRestriction)] = None
+    liabilityStatement: Annotated[LiabilityStatement | str | URIRef | None, RdfProperty(DCAT_US.liabilityStatement)] = (
+        None
+    )
+    useRestriction: Annotated[list[UseRestriction | str | URIRef], RdfProperty(DCAT_US.useRestriction)] = Field(
+        default_factory=list
+    )
+
+    def add_access_restriction(self, value: AccessRestriction | str | URIRef) -> AccessRestriction | str | URIRef:
+        """Add an access restriction."""
+        self.accessRestriction.append(value)
+        return value
+
+    def set_cui_restriction(self, value: CuiRestriction | str | URIRef) -> CuiRestriction | str | URIRef:
+        """Set the CUI restriction."""
+        self.cuiRestriction = value
+        return value
+
+    def set_liability_statement(self, value: LiabilityStatement | str | URIRef) -> LiabilityStatement | str | URIRef:
+        """Set the liability statement."""
+        self.liabilityStatement = value
+        return value
+
+    def add_use_restriction(self, value: UseRestriction | str | URIRef) -> UseRestriction | str | URIRef:
+        """Add a use restriction."""
+        self.useRestriction.append(value)
+        return value
+
+
+class Distribution(_DcatUSRestrictionsMixin, DcatDistribution):
+    """DCAT-US Distribution.
+
+    Extends the core DCAT Distribution with DCAT-US 3.0 restriction and liability properties.
+
+    References:
+    - https://doi-do.github.io/dcat-us/#properties-for-distribution
+
+    """
+
+
+class Dataset(_DcatUSRestrictionsMixin, DcatDataset):
+    """DCAT-US Dataset.
+
+    Extends the core DCAT Dataset with DCAT-US 3.0 restriction, liability, and bounding box properties.
+
+    References:
+    - https://doi-do.github.io/dcat-us/#properties-for-dataset
+
+    """
+
+    geographicBoundingBox: Annotated[
+        list[GeographicBoundingBox | str | URIRef], RdfProperty(DCAT_US.geographicBoundingBox)
+    ] = Field(default_factory=list)
+
+    def add_geographic_bounding_box(
+        self, value: GeographicBoundingBox | str | URIRef
+    ) -> GeographicBoundingBox | str | URIRef:
+        """Add a geographic bounding box to this dataset."""
+        self.geographicBoundingBox.append(value)
+        return value
+
+
+class Catalog(_DcatUSRestrictionsMixin, DcatCatalog):
+    """DCAT-US Catalog.
+
+    Extends the core DCAT Catalog with DCAT-US 3.0 restriction and liability properties.
+
+    References:
+    - https://doi-do.github.io/dcat-us/#properties-for-catalog
+
+    """
+
+
 # Rebuild models to handle forward references
 AccessRestriction.model_rebuild()
 CuiRestriction.model_rebuild()
 GeographicBoundingBox.model_rebuild()
 LiabilityStatement.model_rebuild()
 UseRestriction.model_rebuild()
+Distribution.model_rebuild()
+Dataset.model_rebuild()
+Catalog.model_rebuild()
 
 
 __all__ = [
@@ -243,4 +336,7 @@ __all__ = [
     "GeographicBoundingBox",
     "LiabilityStatement",
     "UseRestriction",
+    "Distribution",
+    "Dataset",
+    "Catalog",
 ]

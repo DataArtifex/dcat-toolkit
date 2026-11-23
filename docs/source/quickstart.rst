@@ -58,10 +58,14 @@ For US Government data portals:
 
 .. code-block:: python
 
-   from dartfx.dcat import dcat_us
+   from dartfx.dcat import DcatUSDataset, dcat_us
 
-   access = dcat_us.AccessRestriction(id="access-1")
-   access.set_restriction_status("http://example.org/status/restricted")
+   dataset = DcatUSDataset(id="us-dataset")
+   access = dcat_us.AccessRestriction(
+       id="access-1",
+       restrictionStatus="http://example.org/status/restricted",
+   )
+   dataset.add_access_restriction(access)
 
 DCAT-AP 3.0.1
 ~~~~~~~~~~~~~

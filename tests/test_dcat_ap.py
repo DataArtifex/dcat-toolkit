@@ -100,6 +100,14 @@ class TestDataset:
         graph = dataset.to_rdf_graph()
         assert len(graph) > 0
 
+    def test_add_temporal_and_access_rights_delegation(self) -> None:
+        """Test temporal coverage and add_access_rights compatibility on DCAT-AP Dataset."""
+        dataset = dcat_ap.Dataset(id="dataset-2")
+        dataset.add_temporal_coverage("http://example.org/period/2024")
+        dataset.add_access_rights("http://publications.europa.eu/resource/authority/access-right/PUBLIC")
+        assert dataset.temporal == ["http://example.org/period/2024"]
+        assert dataset.accessRights == "http://publications.europa.eu/resource/authority/access-right/PUBLIC"
+
 
 class TestDistribution:
     """Test cases for the DCAT-AP Distribution class."""
@@ -210,13 +218,16 @@ class TestControlledVocabularies:
         assert dcat_ap.ControlledVocabularies.EU_ACCESS_RIGHT
 
     def test_hvd_categories_exist(self) -> None:
-        """Test that HVD category constants are defined."""
-        assert dcat_ap.HVDCategory.GEOSPATIAL
-        assert dcat_ap.HVDCategory.EARTH_OBSERVATION
-        assert dcat_ap.HVDCategory.ENVIRONMENT
-        assert dcat_ap.HVDCategory.METEOROLOGICAL
-        assert dcat_ap.HVDCategory.STATISTICS
-        assert dcat_ap.HVDCategory.COMPANIES
+        """Test that HVD category constants match official EU Vocabularies URIs."""
+        assert dcat_ap.HVDCategory.GEOSPATIAL == "http://data.europa.eu/bna/c_ac64a52d"
+        assert dcat_ap.HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT == "http://data.europa.eu/bna/c_dd313021"
+        assert dcat_ap.HVDCategory.METEOROLOGICAL == "http://data.europa.eu/bna/c_164e0bf5"
+        assert dcat_ap.HVDCategory.STATISTICS == "http://data.europa.eu/bna/c_e1da4e07"
+        assert dcat_ap.HVDCategory.COMPANIES == "http://data.europa.eu/bna/c_a9135398"
+        assert dcat_ap.HVDCategory.MOBILITY == "http://data.europa.eu/bna/c_b803a9a9"
+        # Legacy aliases
+        assert dcat_ap.HVDCategory.EARTH_OBSERVATION == dcat_ap.HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT
+        assert dcat_ap.HVDCategory.ENVIRONMENT == dcat_ap.HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT
 
 
 class TestHVDCompliance:

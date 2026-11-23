@@ -163,15 +163,26 @@ class Dataset(DcatDataset):
     otherIdentifier: Annotated[list[str | URIRef], RdfProperty(ADMS.identifier)] = Field(default_factory=list)
     sample: Annotated[list[str | URIRef], RdfProperty(ADMS.sample)] = Field(default_factory=list)
     source: Annotated[list[str | URIRef], RdfProperty(dcterms.DCTERMS.source)] = Field(default_factory=list)
+    temporal: Annotated[list[str | URIRef], RdfProperty(dcterms.DCTERMS.temporal)] = Field(default_factory=list)
 
     def add_applicable_legislation(self, value: str | URIRef) -> str | URIRef:
         """Add applicable legislation (e.g., HVD regulation)."""
         self.applicableLegislation.append(value)
         return value
 
+    def add_access_rights(self, value: str | URIRef, lang: str | None = None) -> None:
+        """Set access rights (delegates to set_access_rights for DCAT-AP 0..1 cardinality)."""
+        del lang
+        self.set_access_rights(value)
+
     def set_access_rights(self, value: str | URIRef) -> str | URIRef:
         """Set access rights (recommended to use EU controlled vocabulary)."""
         self.accessRights = value
+        return value
+
+    def add_temporal_coverage(self, value: str | URIRef) -> str | URIRef:
+        """Add temporal coverage."""
+        self.temporal.append(value)
         return value
 
     def add_provenance(self, value: str | URIRef) -> str | URIRef:
@@ -311,6 +322,11 @@ class DatasetSeries(DcatDatasetSeries):
         self.applicableLegislation.append(value)
         return value
 
+    def add_access_rights(self, value: str | URIRef, lang: str | None = None) -> None:
+        """Set access rights (delegates to set_access_rights for DCAT-AP 0..1 cardinality)."""
+        del lang
+        self.set_access_rights(value)
+
     def set_access_rights(self, value: str | URIRef) -> str | URIRef:
         """Set access rights (recommended to use EU controlled vocabulary)."""
         self.accessRights = value
@@ -369,7 +385,7 @@ class ControlledVocabularies:
     EU_LANGUAGES = "http://publications.europa.eu/resource/authority/language"
     EU_DISTRIBUTION_STATUS = "http://publications.europa.eu/resource/authority/distribution-status"
     EU_AVAILABILITY = "http://publications.europa.eu/resource/authority/planned-availability"
-    SPDX_CHECKSUM_ALGORITHM = "https://spdx.org/rdf/terms/#d4e2129"
+    SPDX_CHECKSUM_ALGORITHM = "http://spdx.org/rdf/terms#"
 
     # At least 1 value from controlled vocabulary
     EU_DATA_THEME = "http://publications.europa.eu/resource/authority/data-theme"
@@ -400,12 +416,16 @@ class HVDCategory:
 
     """
 
-    GEOSPATIAL = "http://data.europa.eu/bna/c_164e0bf5"
-    EARTH_OBSERVATION = "http://data.europa.eu/bna/c_a9135398"
-    ENVIRONMENT = "http://data.europa.eu/bna/c_ac64a52d"
-    METEOROLOGICAL = "http://data.europa.eu/bna/c_b803a9a9"
-    STATISTICS = "http://data.europa.eu/bna/c_dd313021"
-    COMPANIES = "http://data.europa.eu/bna/c_e1da4e07"
+    GEOSPATIAL = "http://data.europa.eu/bna/c_ac64a52d"
+    EARTH_OBSERVATION_AND_ENVIRONMENT = "http://data.europa.eu/bna/c_dd313021"
+    METEOROLOGICAL = "http://data.europa.eu/bna/c_164e0bf5"
+    STATISTICS = "http://data.europa.eu/bna/c_e1da4e07"
+    COMPANIES = "http://data.europa.eu/bna/c_a9135398"
+    MOBILITY = "http://data.europa.eu/bna/c_b803a9a9"
+
+    # Legacy aliases for backwards compatibility
+    EARTH_OBSERVATION = EARTH_OBSERVATION_AND_ENVIRONMENT
+    ENVIRONMENT = EARTH_OBSERVATION_AND_ENVIRONMENT
 
 
 __all__ = [

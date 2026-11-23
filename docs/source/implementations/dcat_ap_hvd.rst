@@ -29,12 +29,12 @@ The six thematic categories of High Value Datasets:
    from dartfx.dcat import HVDCategory
 
    # Official HVD Categories from EU Vocabularies
-   HVDCategory.GEOSPATIAL           # Geospatial data
-   HVDCategory.EARTH_OBSERVATION    # Earth observation & environment
-   HVDCategory.ENVIRONMENT          # Environment
-   HVDCategory.METEOROLOGICAL       # Meteorological data
-   HVDCategory.STATISTICS           # Statistics
-   HVDCategory.COMPANIES            # Company & ownership data
+   HVDCategory.GEOSPATIAL                         # Geospatial
+   HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT  # Earth observation & environment
+   HVDCategory.METEOROLOGICAL                     # Meteorological
+   HVDCategory.STATISTICS                         # Statistics
+   HVDCategory.COMPANIES                          # Companies & company ownership
+   HVDCategory.MOBILITY                           # Mobility
 
 Quick Example
 -------------

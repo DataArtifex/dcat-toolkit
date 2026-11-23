@@ -20,15 +20,21 @@ class TestHVDCategory:
     """Test cases for HVD categories."""
 
     def test_all_categories_exist(self) -> None:
-        """Test that all 6 HVD categories are defined."""
+        """Test that all 6 official HVD categories are defined with accurate URIs."""
         categories = dcat_ap_hvd.HVDCategory.all_categories()
         assert len(categories) == 6
+        assert dcat_ap_hvd.HVDCategory.GEOSPATIAL == "http://data.europa.eu/bna/c_ac64a52d"
+        assert dcat_ap_hvd.HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT == "http://data.europa.eu/bna/c_dd313021"
+        assert dcat_ap_hvd.HVDCategory.METEOROLOGICAL == "http://data.europa.eu/bna/c_164e0bf5"
+        assert dcat_ap_hvd.HVDCategory.STATISTICS == "http://data.europa.eu/bna/c_e1da4e07"
+        assert dcat_ap_hvd.HVDCategory.COMPANIES == "http://data.europa.eu/bna/c_a9135398"
+        assert dcat_ap_hvd.HVDCategory.MOBILITY == "http://data.europa.eu/bna/c_b803a9a9"
         assert dcat_ap_hvd.HVDCategory.GEOSPATIAL in categories
-        assert dcat_ap_hvd.HVDCategory.EARTH_OBSERVATION in categories
-        assert dcat_ap_hvd.HVDCategory.ENVIRONMENT in categories
+        assert dcat_ap_hvd.HVDCategory.EARTH_OBSERVATION_AND_ENVIRONMENT in categories
         assert dcat_ap_hvd.HVDCategory.METEOROLOGICAL in categories
         assert dcat_ap_hvd.HVDCategory.STATISTICS in categories
         assert dcat_ap_hvd.HVDCategory.COMPANIES in categories
+        assert dcat_ap_hvd.HVDCategory.MOBILITY in categories
 
     def test_is_valid_category(self) -> None:
         """Test category validation."""
@@ -212,6 +218,8 @@ class TestHVDDatasetSeries:
     def test_make_hvd_compliant(self) -> None:
         """Test making dataset series HVD-compliant."""
         series = dcat_ap_hvd.DatasetSeries(id="hvd-series-1")
+        assert not series.is_hvd_compliant()
+
         series.make_hvd_compliant(dcat_ap_hvd.HVDCategory.STATISTICS)
 
         # Check HVD regulation added
@@ -219,6 +227,7 @@ class TestHVDDatasetSeries:
 
         # Check HVD category added
         assert dcat_ap_hvd.HVDCategory.STATISTICS in series.hvdCategory
+        assert series.is_hvd_compliant()
 
 
 class TestRdfSerialization:

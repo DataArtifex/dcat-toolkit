@@ -48,6 +48,9 @@ from .dcat_ap import (
 from .dcat_ap import (
     Distribution as DcatAPDistribution,
 )
+from .dcat_ap import (
+    HVDCategory as DcatAPHVDCategory,
+)
 
 # HVD-specific namespace
 DCATAP_HVD = Namespace("http://data.europa.eu/r5r/")
@@ -59,7 +62,7 @@ HVD_REGULATION = "http://data.europa.eu/eli/reg_impl/2023/138/oj"
 EU_HVD_CATEGORY = Namespace("http://data.europa.eu/bna/")
 
 
-class HVDCategory:
+class HVDCategory(DcatAPHVDCategory):
     """High Value Dataset Categories.
 
     The six thematic categories of High Value Datasets as defined in
@@ -73,24 +76,16 @@ class HVDCategory:
 
     """
 
-    # Official HVD Categories from EU Vocabularies
-    GEOSPATIAL = "http://data.europa.eu/bna/c_164e0bf5"
-    EARTH_OBSERVATION = "http://data.europa.eu/bna/c_a9135398"
-    ENVIRONMENT = "http://data.europa.eu/bna/c_ac64a52d"
-    METEOROLOGICAL = "http://data.europa.eu/bna/c_b803a9a9"
-    STATISTICS = "http://data.europa.eu/bna/c_dd313021"
-    COMPANIES = "http://data.europa.eu/bna/c_e1da4e07"
-
     @classmethod
     def all_categories(cls) -> list[str]:
-        """Return all HVD category URIs."""
+        """Return all six official HVD category URIs."""
         return [
             cls.GEOSPATIAL,
-            cls.EARTH_OBSERVATION,
-            cls.ENVIRONMENT,
+            cls.EARTH_OBSERVATION_AND_ENVIRONMENT,
             cls.METEOROLOGICAL,
             cls.STATISTICS,
             cls.COMPANIES,
+            cls.MOBILITY,
         ]
 
     @classmethod
@@ -339,6 +334,16 @@ class DatasetSeries(DcatAPDatasetSeries):
         # Add HVD category (mandatory)
         if category not in self.hvdCategory:
             self.add_hvd_category(category)
+
+    def is_hvd_compliant(self) -> bool:
+        """Check if this dataset series meets HVD mandatory requirements.
+
+        Returns:
+            True if the dataset series has HVD regulation and at least one HVD category
+        """
+        has_regulation = HVD_REGULATION in self.applicableLegislation
+        has_category = len(self.hvdCategory) > 0
+        return has_regulation and has_category
 
 
 class CatalogRecord(DcatAPCatalogRecord):
